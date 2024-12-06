@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMS Watches - Shop</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #D3D9D4;
+            color: #124E66;
+            padding: 20px;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header-left {
+            text-align: left;
+            display: flex;
+        }
+
+        .logo {
+
+            width: 5rem; /* Adjust the size as needed */
+            height: 5rem;
+            margin-right: 20px; /* Space between the logo and title */
+        }
+
+        .header-right {
+            display: flex;
+            text-align: right;
+        }
+        .header-left h1 {
+            margin: 0;
+            font-family: 'Lucida Handwriting', cursive;
+        }
+
+        .slogan {
+            font-family: 'Lucida handwriting', cursive;
+            font-size: 18px;
+            color: #124E66;
+            margin-top: 30px;
+	    }
+        .header-right ul {
+            list-style: none;
+            display: flex;
+            font-family: 'Lucida Handwriting', cursive;
+        }
+        .header-right ul li {
+            margin-left: 20px;
+        }
+        .header-right ul li a {
+            color: #124E66;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .header-right ul li a.cart-icon {
+            position: relative;
+            display: inline-block;
+            color: #124E66;
+            font-size: 14px;
+            text-decoration: none;
+        }
+        .header-right ul li a.cart-icon::after {
+            content: "";
+            background-image: url('cart-icon.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            position: absolute;
+            top: -8px;
+            right: -8px;
+        }
+        .header-right ul li a.cart-icon:hover::after {
+            transform: scale(1.1);
+        }
+        .header-right ul li:last-child {
+            margin-left: auto;
+        }
+        .header-right ul li:last-child a {
+           
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+       
+        main {
+            padding: 20px;
+        }
+        .product-grid {
+            background-color: #D3D9D4;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        .product-card {
+            background-color: #f5f5f5;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            position: relative;
+        }
+        .product-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        .product-card h3 {
+            font-size: 20px;
+            margin: 10px 0 5px 0;
+        }
+        .product-card p {
+            font-size: 16px;
+            color: #333;
+            margin: 5px 0;
+        }
+        .product-card .star-rating {
+            color: #ffa500;
+            margin: 5px 0;
+        }
+        .product-card .price {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .product-card .cart-icon {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+        }
+        .product-card .buy-now {
+            display: inline-block;
+            padding: 10px 15px;
+            background-color: #ff4500;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            margin-top: 10px;
+            text-decoration: none;
+        }
+        .product-card .buy-now:hover {
+            background-color: #ff6347;
+        }
+        
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <img src="newlogo1.png" alt="Logo" class="logo">
+            <div class="header-title">
+                <div class="slogan">#Twin edition</div>
+            </div>
+        </div>
+        <div class="header-right">
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="cart.html">Cart</a></li>
+                    <li><a href="signin.html">Sign In</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="product-grid">
+            <!-- Product 1 -->
+            <div class="product-card" data-id="1">
+                <img src="couple1.jpg" alt="Classic Black">
+                <h3>Classic Grey</h3>
+                <p>Elegant Steel belt.</p>
+                <div class="star-rating">★★★★★</div>
+                <div class="price">$299</div>
+                <div class="quantity-container">
+                    <span class="quantity-label">Select Quantity:</span>
+                    <select class="quantity-select1">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+                <a onclick="location.href='cart.html?image=couple1.jpg&name=Classic%20Grey&description=Elegant%20steel%20belt.&price=299&quantity=' + document.querySelector('.quantity-select1').value"  class="cart-icon">
+                
+                    <img src="cart-icon.png" alt="Add to Cart" class="cart-icon">
+                </a>
+                <button onclick="location.href='buynow.html?image=couple1.jpg&name=Classic%20Grey&description=Elegant%20steel%20belt.&price=299&quantity=' + document.querySelector('.quantity-select1').value" class="buy-now">Buy Now</button>
+
+            </div>
+            <!-- Product 2 -->
+            <div class="product-card" data-id="2">
+                <img src="couple2.jpg" alt="Modern Silver">
+                <h3>Modern Rose gold and black pair</h3>
+                <p>Stylish mismatch.</p>
+                <div class="star-rating">★★★★☆</div>
+                <div class="price">$349</div>
+                <div class="quantity-container">
+                    <span class="quantity-label">Select Quantity:</span>
+                    <select class="quantity-select2">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+                <a onclick="location.href='cart.html?image=couple2.jpg&name=Modern%20Rose%20Gold%20and%20black%20pair&description=Stylish%20Mismatch.&price=349&quantity=' + document.querySelector('.quantity-select2').value" class="cart-icon">
+                    <img src="cart-icon.png" alt="Add to Cart" class="cart-icon">
+                </a>
+                <button onclick="location.href='buynow.html?image=couple2.jpg&name=Modern%20Rose%20Gold%20and%20black%20pair&description=Stylish%20Mismatch.&price=349&quantity=' + document.querySelector('.quantity-select2').value" class="buy-now">Buy Now</button>
+            </div>
+            <!-- Product 3 -->
+            <div class="product-card" data-id="3">
+                <img src="couple3.jpg" alt="Rose Gold Charm">
+                <h3>Rose Gold Charm</h3>
+                <p>Delicate rose gold finish.</p>
+                <div class="star-rating">★★★★★</div>
+                <div class="price">$399</div>
+                <div class="quantity-container">
+                    <span class="quantity-label">Select Quantity:</span>
+                    <select class="quantity-select3">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+                <a onclick="location.href='cart.html?image=couple3.jpg&name=Rose%20Gol%20Charm&description=Delicate%20rose%20gold%20finish.&price=399&quantity=' + document.querySelector('.quantity-select3').value" class="cart-icon">
+                    <img src="cart-icon.png" alt="Add to Cart" class="cart-icon">
+                </a>
+                <button onclick="location.href='buynow.html?image=couple3.jpg&name=Rose%20Gol%20Charm&description=Delicate%20rose%20gold%20finish.&price=399&quantity=' + document.querySelector('.quantity-select3').value" class="buy-now">Buy Now</button>
+            </div>
+            <!-- Product 4 -->
+            <div class="product-card" data-id="4">
+                <img src="couple4.jpg" alt="Golden Elegance">
+                <h3>Black and silver floral</h3>
+                <p>Luxurious chain strap.</p>
+                <div class="star-rating">★★★★★</div>
+                <div class="price">$429</div>
+                <div class="quantity-container">
+                    <span class="quantity-label">Select Quantity:</span>
+                    <select class="quantity-select4">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+                <a onclick="location.href='cart.html?image=couple4.jpg&name=Black%20and%20Silver%20floral&description=Luxurious%20chain%20strap.&price=429&quantity=' + document.querySelector('.quantity-select4').value" class="cart-icon">
+                    <img src="cart-icon.png" alt="Add to Cart" class="cart-icon">
+                </a>
+                <button onclick="location.href='buynow.html?image=couple4.jpg&name=Black%20and%20Silver%20floral&description=Luxurious%20chain%20strap.&price=429&quantity=' + document.querySelector('.quantity-select4').value" class="buy-now">Buy Now</button>
+            </div>
+            <!-- Product 5 -->
+            <div class="product-card" data-id="5">
+                <img src="couple5.jpg" alt="Blue Moon">
+                <h3>Green nature</h3>
+                <p>Earthy Green fabric strap.</p>
+                <div class="star-rating">★★★★☆</div>
+                <div class="price">$319</div>
+                <div class="quantity-container">
+                    <span class="quantity-label">Select Quantity:</span>
+                    <select class="quantity-select5">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+                <a onclick="location.href='cart.html?image=couple5.jpg&name=Green%20nature&description=Earthy%20Green%20fabric%20strap.&price=319&quantity=' + document.querySelector('.quantity-select5').value" class="cart-icon">
+                    <img src="cart-icon.png" alt="Add to Cart" class="cart-icon">
+                </a>
+                <button onclick="location.href='buynow.html?image=couple5.jpg&name=Green%20nature&description=Earthy%20Green%20fabric%20strap.&price=319&quantity=' + document.querySelector('.quantity-select5').value" class="buy-now">Buy Now</button>
+            </div>
+            <!-- Product 6 -->
+            <div class="product-card" data-id="6">
+                <img src="couple6.jpg" alt="Green Nature">
+                <h3>Blue Moon</h3>
+                <p>Vibrant blue dial.</p>
+                <div class="star-rating">★★★★★</div>
+                <div class="price">$289</div>
+                <div class="quantity-container">
+                    <span class="quantity-label">Select Quantity:</span>
+                    <select class="quantity-select6">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+                <a onclick="location.href='cart.html?image=couple6.jpg&name=Blue%20Moon&description=Vibrant%20Blue%20dial.&price=289&quantity=' + document.querySelector('.quantity-select6').value" class="cart-icon">
+                    <img src="cart-icon.png" alt="Add to Cart" class="cart-icon">
+                </a>
+                <button onclick="location.href='buynow.html?image=couple6.jpg&name=Blue%20Moon&description=Vibrant%20Blue%20dial.&price=289&quantity=' + document.querySelector('.quantity-select6').value" class="buy-now">Buy Now</button>
+            </div>
+            <!-- Product 7 -->
+            <div class="product-card" data-id="7">
+                <img src="couple7.jpg" alt="Silver Grace">
+                <h3>Black Queen</h3>
+                <p>Rose Gold Finish.</p>
+                <div class="star-rating">★★★★★</div>
+                <div class="price">$359</div>
+                <div class="quantity-container">
+                    <span class="quantity-label">Select Quantity:</span>
+                    <select class="quantity-select7">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+                <a onclick="location.href='cart.html?image=couple7.jpg&name=Black%20Queen&description=Rose%20Gold%20Finish.&price=259&quantity=' + document.querySelector('.quantity-select7').value" class="cart-icon">
+                    <img src="cart-icon.png" alt="Add to Cart" class="cart-icon">
+                </a>
+                <button onclick="location.href='buynow.html?image=couple7.jpg&name=Black%20Queen&description=Rose%20Gold%20Finish.&price=259&quantity=' + document.querySelector('.quantity-select7').value" class="buy-now">Buy Now</button>
+            </div>
+            <!-- Product 8 -->
+            <div class="product-card" data-id="8">
+                <img src="couple8.jpg" alt="Black & White">
+                <h3>Black & White</h3>
+                <p>White dial with unique strap.</p>
+                <div class="star-rating">★★★★☆</div>
+                <div class="price">$279</div>
+                <div class="quantity-container">
+                    <span class="quantity-label">Select Quantity:</span>
+                    <select class="quantity-select8">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+                <a onclick="location.href='cart.html?image=couple8.jpg&name=Black%20&%20White&description=White%20dial%20withunique%20strap.&price=279&quantity=' + document.querySelector('.quantity-select8').value" class="cart-icon">
+                    <img src="cart-icon.png" alt="Add to Cart" class="cart-icon">
+                </a>
+                <button onclick="location.href='buynow.html?image=couple8.jpg&name=Black%20&%20White&description=White%20dial%20withunique%20strap.&price=279&quantity=' + document.querySelector('.quantity-select8').value" class="buy-now">Buy Now</button>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

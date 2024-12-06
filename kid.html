@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMS Watches - Shop</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #D3D9D4;
+            color: #124E66;
+            padding: 20px;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header-left {
+            text-align: left;
+            display: flex;
+        }
+
+        .logo {
+
+            width: 6rem; /* Adjust the size as needed */
+            height: 6rem;
+            margin-right: 20px; /* Space between the logo and title */
+        }
+        .header-right {
+            display: flex;
+            text-align: right;
+        }
+        .header-left h1 {
+            margin: 0;
+            font-family: 'Lucida Handwriting', cursive;
+        }
+
+        .slogan {
+            font-family: 'Lucida handwriting', cursive;
+            font-size: 18px;
+            color: #124E66;
+            margin-top: 30px;
+	    }
+        .header-right ul {
+            list-style: none;
+            display: flex;
+            font-family: 'Lucida Handwriting', cursive;
+        }
+        .header-right ul li {
+            margin-left: 20px;
+        }
+        .header-right ul li a {
+            color: #124E66;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .header-right ul li a.cart-icon {
+            position: relative;
+            display: inline-block;
+            color: #124E66;
+            font-size: 14px;
+            text-decoration: none;
+        }
+        .header-right ul li a.cart-icon::after {
+            content: "";
+            background-image: url('cart-icon.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            position: absolute;
+            top: -8px;
+            right: -8px;
+        }
+        .header-right ul li a.cart-icon:hover::after {
+            transform: scale(1.1);
+        }
+        .header-right ul li:last-child {
+            margin-left: auto;
+        }
+        .header-right ul li:last-child a {
+           
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        
+        main {
+            padding: 20px;
+        }
+        .product-grid {
+            background-color: #D3D9D4;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        .product-card {
+            background-color: #f5f5f5;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            position: relative;
+        }
+        .product-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        .product-card h3 {
+            font-size: 20px;
+            margin: 10px 0 5px 0;
+        }
+        .product-card p {
+            font-size: 16px;
+            color: #333;
+            margin: 5px 0;
+        }
+        .product-card .star-rating {
+            color: #ffa500;
+            margin: 5px 0;
+        }
+        .product-card .price {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .product-card .cart-icon {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+        }
+        .product-card .buy-now {
+            display: inline-block;
+            padding: 10px 15px;
+            background-color: #ff4500;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            margin-top: 10px;
+            text-decoration: none;
+        }
+        .product-card .buy-now:hover {
+            background-color: #ff6347;
+        }
+
+       
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <img src="newlogo1.png" alt="Logo" class="logo">
+            <div class="header-title">
+                <div class="slogan">#For Little one's Edition</div>
+            </div>
+        </div>
+        <div class="header-right">
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="cart.html">Cart</a></li>
+                    <li><a href="signin.html">Sign In</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="product-grid">
+            <!-- Product Cards -->
+            <div class="product-card" data-id="1">
+                <img src="kid1.jpg" alt="Watch 1">
+                <h3>Cherry Pink</h3>
+                <p>Marble dial.</p>
+                <div class="star-rating">★★★★★</div>
+                <div class="price">$299</div>
+                <div class="quantity-container">
+                    <span class="quantity-label">Select Quantity:</span>
+                    <select class="quantity-select1">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+                <a onclick="location.href='cart.html?image=kid1.jpg&name=Cherry%20Pink&description=Marble%20dial.&price=299&quantity=' + document.querySelector('.quantity-select1').value" class="cart-icon">
+                    <img src="cart-icon.png" alt="Add to Cart" class="cart-icon">
+                </a>
+                <button onclick="location.href='buynow.html?image=kid1.jpg&name=Cherry%20Pink&description=Marble%20dial.&price=299&quantity=' + document.querySelector('.quantity-select1').value" class="buy-now">Buy Now</button>
+            </div>
+            <div class="product-card" data-id="2">
+                <img src="kid2.jpg" alt="Watch 2">
+                <h3>White pearl</h3>
+                <p>Marble print.</p>
+                <div class="star-rating">★★★★☆</div>
+                <div class="price">$349</div>
+                <div class="quantity-container">
+                    <span class="quantity-label">Select Quantity:</span>
+                    <select class="quantity-select2">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+                <a onclick="location.href='cart.html?image=kid2.jpg&name=White%20Pearl&description=Marble%20print.&price=199&quantity=' + document.querySelector('.quantity-select2').value" class="cart-icon">
+                    <img src="cart-icon.png" alt="Add to Cart" class="cart-icon">
+                </a>
+                <button onclick="location.href='buynow.html?image=kid2.jpg&name=White%20Pearl&description=Marble%20print.&price=199&quantity=' + document.querySelector('.quantity-select2').value" class="buy-now">Buy Now</button>
+            </div>
+            <div class="product-card" data-id="3">
+                <img src="kid3.jpg" alt="Watch 3">
+                <h3>Silver Stream</h3>
+                <p>Sleek Steel belt.</p>
+                <div class="star-rating">★★★☆☆</div>
+                <div class="price">$199</div>
+                <div class="quantity-container">
+                    <span class="quantity-label">Select Quantity:</span>
+                    <select class="quantity-select3">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+                <a onclick="location.href='cart.html?image=kid3.jpg&name=Silver%20Stream&description=Sleek%20Steel%20belt.&price=199&quantity=' + document.querySelector('.quantity-select3').value" class="cart-icon">
+                    <img src="cart-icon.png" alt="Add to Cart" class="cart-icon">
+                </a>
+                <button onclick="location.href='buynow.html?image=kid3.jpg&name=Silver%20Stream&description=Sleek%20Steel%20belt.&price=199&quantity=' + document.querySelector('.quantity-select3').value" class="buy-now">Buy Now</button>
+            </div>
+            <div class="product-card" data-id="4">
+                <img src="kid4.jpg" alt="Watch 4">
+                <h3>Elegant Rose Gold</h3>
+                <p>Luxurious gold plated case.</p>
+                <div class="star-rating">★★★★★</div>
+                <div class="price">$499</div>
+                <div class="quantity-container">
+                    <span class="quantity-label">Select Quantity:</span>
+                    <select class="quantity-select4">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+                <a onclick="location.href='cart.html?image=kid4.jpg&name=Elegant%20Rose%20Gold&description=Luxurious%20Gold%20plated%20case.&price=499&quantity=' + document.querySelector('.quantity-select4').value" class="cart-icon">
+                    <img src="cart-icon.png" alt="Add to Cart" class="cart-icon">
+                </a>
+                <button onclick="location.href='buynow.html?image=kid4.jpg&name=Elegant%20Rose%20Gold&description=Luxurious%20Gold%20plated%20case.&price=499&quantity=' + document.querySelector('.quantity-select4').value" class="buy-now">Buy Now</button>
+            </div>
+            <div class="product-card" data-id="5">
+                <img src="kid5.jpg" alt="Watch 5">
+                <h3>Casual Brown</h3>
+                <p>Comfortable brown leather strap.</p>
+                <div class="star-rating">★★★★☆</div>
+                <div class="price">$259</div>
+                <div class="quantity-container">
+                    <span class="quantity-label">Select Quantity:</span>
+                    <select class="quantity-select5">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+                <a onclick="location.href='cart.html?image=kid5.jpg&name=Casual%20Brown&description=Comfortable%20brown%20leather%20strap.&price=259&quantity=' + document.querySelector('.quantity-select5').value" class="cart-icon">
+                    <img src="cart-icon.png" alt="Add to Cart" class="cart-icon">
+                </a>
+                <button onclick="location.href='buynow.html?image=kid5.jpg&name=Casual%20Brown&description=Comfortable%20brown%20leather%20strap.&price=259&quantity=' + document.querySelector('.quantity-select5').value" class="buy-now">Buy Now</button>
+            </div>
+            <div class="product-card" data-id="6">
+                <img src="kid6.jpg" alt="Watch 6">
+                <h3>Lead Black</h3>
+                <p>Adjustable Belt.</p>
+                <div class="star-rating">★★★☆☆</div>
+                <div class="price">$329</div>
+                <div class="quantity-container">
+                    <span class="quantity-label">Select Quantity:</span>
+                    <select class="quantity-select6">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+                <a onclick="location.href='cart.html?image=kid6.jpg&name=Lead%20Black&description=Adjustable%20Belt.&price=329&quantity=' + document.querySelector('.quantity-select6').value" class="cart-icon">
+                    <img src="cart-icon.png" alt="Add to Cart" class="cart-icon">
+                </a>
+                <button onclick="location.href='buynow.html?image=kid6.jpg&name=Lead%20Black&description=Adjustable%20Belt.&price=329&quantity=' + document.querySelector('.quantity-select6').value" class="buy-now">Buy Now</button>
+            </div>
+            <div class="product-card" data-id="7">
+                <img src="kid7.jpg" alt="Watch 7">
+                <h3>Old school</h3>
+                <p>Square dial.</p>
+                <div class="star-rating">★★★★★</div>
+                <div class="price">$379</div>
+                <div class="quantity-container">
+                    <span class="quantity-label">Select Quantity:</span>
+                    <select class="quantity-select7">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+                <a onclick="location.href='cart.html?image=kid7.jpg&name=Old%20school&description=Square%20dial.&price=379&quantity=' + document.querySelector('.quantity-select7').value" class="cart-icon">
+                    <img src="cart-icon.png" alt="Add to Cart" class="cart-icon">
+                </a>
+                <button onclick="location.href='buynow.html?image=kid7.jpg&name=Old%20school&description=Square%20dial.&price=379&quantity=' + document.querySelector('.quantity-select7').value" class="buy-now">Buy Now</button>
+            </div>
+            <div class="product-card" data-id="8">
+                <img src="kid8.jpg" alt="Watch 8">
+                <h3>Dawn Grey</h3>
+                <p>Simple rubber belt.</p>
+                <div class="star-rating">★★★★☆</div>
+                <div class="price">$599</div>
+                <div class="quantity-container">
+                    <span class="quantity-label">Select Quantity:</span>
+                    <select class="quantity-select8">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+                <a onclick="location.href='cart.html?image=kid8.jpg&name=Dawn%20Grey&description=Simple%20rubber%20belt.&price=329&quantity=' + document.querySelector('.quantity-select8').value" class="cart-icon">
+                    <img src="cart-icon.png" alt="Add to Cart" class="cart-icon">
+                </a>
+               
+                <button onclick="location.href='buynow.html?image=kid8.jpg&name=Dawn%20Grey&description=Simple%20rubber%20belt.&price=329&quantity=' + document.querySelector('.quantity-select8').value" class="buy-now">Buy Now</button>
+            </div>
+           
+        </section>
+    </main>
+   <script>
+        document.querySelectorAll('.cart-icon').forEach((icon) => {
+            icon.addEventListener('click', () => {
+                const productCard = icon.closest('.product-card');
+                const productId = productCard.getAttribute('data-id');
+                const productDetails = {
+                    id: productId,
+                    image: productCard.querySelector('img').src,
+                    name: productCard.querySelector('h3').textContent,
+                    description: productCard.querySelector('p').textContent,
+                    rating: productCard.querySelector('.star-rating').textContent,
+                    price: productCard.querySelector('.price').textContent
+                };
+
+                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+                cart.push(productDetails);
+                localStorage.setItem('cart', JSON.stringify(cart));
+                alert('Item added to cart');
+            });
+        });
+
+        document.getElementById('buyNowBtn').onclick = function() {
+    window.location.href = 'buynow.html';
+};
+    </script>
+</body>
+</html>

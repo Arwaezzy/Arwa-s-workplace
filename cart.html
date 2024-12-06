@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart - AMS Watches</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            background-image: url("banner18.png");
+            background-size: cover;
+        }
+        header {
+            background-color: #D3D9D4;
+            color: #124E66;
+            padding: 20px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            text-align: center;
+            padding: 0 50px;
+        }
+        .header-left {
+            display: flex;
+            align-items: center;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+        }
+
+        .header-right i{
+            font-size: 30px;
+            color: #124E66;
+        }
+
+        .logo {
+            width: 6rem; /* Adjust the size as needed */
+            height: 6rem;
+            margin-right: 20px; /* Space between the logo and title */
+        }
+
+        .header-middle h1 {
+            margin: 0;
+            font-size: 36px;
+            font-family: 'Lucida Handwriting', cursive;
+        }
+
+        main {
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        th {
+            background-color: #f4f4f4;
+            text-align: left;
+        }
+        td img {
+            max-width: 100px;
+            height: auto;
+            border-radius: 8px;
+        }
+        .button {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+        }
+        .buy-now {
+            background-color: #28a745;
+        }
+        .buy-now:hover {
+            background-color: #218838;
+        }
+        .remove {
+            background-color: #dc3545;
+        }
+        .remove:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <img src="newlogo1.png" alt="Logo" class="logo">
+        </div>
+        <div class="header-middle">
+            <h1>#cart</h1>
+        </div>
+        <div class="header-right">
+            <a href="index.html" class="home-icon">
+                <i class="fas fa-home"></i>
+            </a>
+        </div>
+    </header>
+    <main>
+        <table>
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="cartItems">
+                <!-- Cart items will be inserted here by JavaScript -->
+            </tbody>
+        </table>
+    </main>
+
+    <script>
+        // Function to extract URL parameters
+        function getParameterByName(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+
+        // Function to add item to cart
+        function addItemToCart() {
+            const cart = JSON.parse(localStorage.getItem('cart'))
+            console.log(cart)
+            const cartItems = document.getElementById('cartItems');
+            const image = getParameterByName('image');
+            const name = getParameterByName('name');
+            const description = getParameterByName('description');
+            const price = getParameterByName('price');
+            const quantity = getParameterByName('quantity') || '1';
+
+            console.log(image);
+
+            if (image && name && description && price) {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td><img src="${image}" alt="Product Image"></td>
+                    <td>${name}</td>
+                    <td>${description}</td>
+                    <td>$${price}</td>
+                    <td>${quantity}</td>
+                    <td>
+                        <a href="buynow.html?image=${image}&name=${name}&description=${description}&price=${price}&quantity=${quantity}" class="button buy-now">Buy Now</a>
+                        <button class="button remove" onclick="removeItem(this)">Remove</button>
+                    </td>
+                `;
+                cartItems.appendChild(row);
+            }
+        }
+
+        // Function to remove an item from the cart
+        function removeItem(button) {
+            const row = button.parentNode.parentNode;
+            row.remove();
+        }
+
+        // Add the item to the cart on page load
+        addItemToCart();
+    </script>
+</body>
+</html>

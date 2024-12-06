@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore - AMS Watches</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial Sans-serif;
+        }   
+
+        header {
+            background-color: #D3D9D4;
+            color: #124E66;
+            padding: 20px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            text-align: center;
+            padding: 0 50px;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+        }
+
+        .header-right i {
+            font-size: 30px;
+            color: #124E66;
+
+        }
+
+        .logo {
+            width: 6rem;
+            height: 6rem;
+            margin-right: 20px;
+        }
+
+        .header-middle h1{
+            margin: 0;
+            font-size: 36px;
+            font-family: 'Lucida Handwriting';
+        }
+
+        .banner {
+            background: url('banner16.jpg') no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(90, 86, 86, 0.629);
+            z-index: 1;
+        }
+
+        .content {
+            padding: 50px 20px;
+            font-family: Grey Qo;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            color: #000;
+        }
+
+        .content h2 {
+            font-family: GREy Qo;
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .service-grid {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 0 20px;
+        }
+
+        .service-card {
+            background-color: #f5f5f5;
+            padding: 20px;
+            border-radius: 10px;
+            width: 30%;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            color: #142d4c;
+        }
+
+        .service-card h3 {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .service-card p {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .service-card a {
+            color: #142d4c;
+            text-decoration: none;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .form-container {
+            display: none;
+            margin-top: 20px;
+            background-color: #fff;
+            width: 24pc;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            color: #142d4c;
+        }
+
+        .form-container h3{
+            text-align: center;
+        }
+
+        .form-container form {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .form-container form label {
+            font-weight: bold;
+            font-family: 'Times New Roman', Times, serif;
+            color: #142d4c; /* Ensure labels are visible */
+        }
+
+        .form-container form input, .form-container form textarea {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .form-container form button {
+            padding: 10px;
+            background-color: #142d4c;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .form-container form button:hover {
+            background-color: #B5CFB7;
+        }
+
+        @media (max-width: 768px) {
+            .service-card {
+                width: 45%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .service-card {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <img src="newlogo1.png" alt="Logo" class="logo">
+        </div>
+        <div class="header-middle">
+            <h1>#explore</h1>
+        </div>
+        <div class="header-right">
+            <a href="index.html" class="home-icon">
+                <i class="fas fa-home"></i>
+            </a>
+        </div>
+    </header>
+
+    <div class="banner">
+        <div class="content">
+            <h2>Explore Our Services</h2>
+            <div class="service-grid">
+                <div class="service-card" id="service-repair">
+                    <h3>Watch Repair</h3>
+                    <p>Get your watches repaired by our expert technicians. We offer a wide range of repair services.</p>
+                    <a onclick="showForm('repair-form', 'service-repair')">Learn More</a>
+                    <div id="repair-form" class="form-container">
+                        <h3>Watch Repair Form</h3>
+                        
+
+                        <form id="repair_form" onsubmit="submitForm(event, 'repair_form')">
+                            <label for="watchname">Watch Name:</label>
+                            <input type="text" id="watchname" name="watch_name" required>
+                    
+                            <label for="brand">Brand:</label>
+                            <input type="text" id="brand" name="brand" required>
+                    
+                            <label for="issue">Issue:</label>
+                            <textarea id="issue" name="issue" required></textarea>
+                    
+                            <label for="contactnumber">Contact Number:</label>
+                            <input type="tel" id="contactnumber" name="contact" required>
+                    
+                            <label for="username">Username:</label>
+                            <input type="text" id="username" name="username" required>
+                    
+                            <button type="submit">Submit</button>
+                            <p id="response"></p>
+                        </form>
+                    </div>
+                </div>
+                <div class="service-card" id="service-custom-design">
+                    <h3>Custom Watch Design</h3>
+                    <p>Create your own custom watch design. Choose from a variety of styles and materials.</p>
+                    <a onclick="showForm('custom-design-form', 'service-custom-design')">Learn More</a>
+                    <div id="custom-design-form" class="form-container">
+                        <h3>Custom Watch Design Form</h3>
+                        <form id="custom_design_form" onsubmit="submitForm(event, 'custom_design_form')">
+                            <label for="customer-name">Customer Name:</label>
+                            <input type="text" id="customer-name" name="customer-name" >
+                            
+                            <label for="watch-brand">Watch Brand:</label>
+                            <input type="text" id="watch-brand" name="watch-brand" required>
+                            
+                            <label for="customizations">Customizations:</label>
+                            <textarea id="customizations" name="customizations" required></textarea>
+                            
+                            <label for="contact-number">Contact Number:</label>
+                            <input type="tel" id="contact-number" name="contact-number" required>
+                            
+                            <label for="username">Username:</label>
+                            <input type="username" id="username" name="username" required>
+                            
+                            <button type="submit" id="submi">Submit</button>
+                            <p id="response"></p>
+                        </form>
+                    </div>
+                </div>
+                <div class="service-card" id="service-maintenance">
+                    <h3>Maintenance Plan</h3>
+                    <p>Enroll in our maintenance plan to keep your watch in perfect condition. Regular check-ups and servicing included.</p>
+                    <a onclick="showForm('maintenance-form', 'service-maintenance')">Learn More</a>
+                    <div id="maintenance-form" class="form-container">
+                        <h3>Maintenance Plan Form</h3>
+                        <form id="maintenance_form" onsubmit="submitForm(event, 'maintenance_form')">
+                            <label for="watch-brand">Watch Brand:</label>
+                            <input type="text" id="watch-brand" name="watch-brand" required>
+                            
+                            <label for="maintenance-plan">Maintenance Plan:</label>
+                            <textarea id="maintenance-plan" name="maintenance-plan" required></textarea>
+                            
+                            <label for="contact-number">Contact Number:</label>
+                            <input type="tel" id="contact-number" name="contact-number" required>
+                            
+                            <label for="username">Username:</label>
+                            <input type="username" id="username" name="username" required>
+                            
+                            <button type="submit">Submit</button>
+                            <p id="reponse"></p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showForm(formId, serviceId) {
+            const formContainer = document.getElementById(formId);
+            const serviceCard = document.getElementById(serviceId);
+            
+            const otherForms = document.querySelectorAll('.form-container');
+            otherForms.forEach(form => {
+                if (form !== formContainer) {
+                    form.style.display = 'none';
+                }
+            });
+
+            formContainer.style.display = formContainer.style.display === 'block' ? 'none' : 'block';
+            
+            if (formContainer.style.display === 'block') {
+                serviceCard.appendChild(formContainer);
+            }
+        }
+
+        function submitForm(event, formId) {
+            event.preventDefault();
+
+            // Get the form element by its ID
+            const form = document.getElementById(formId);
+            if (!form) {
+                console.error("Form not found with ID:", formId);
+                return;
+            }
+
+            // Create a FormData object from the form
+            const formData = new FormData(form);
+
+            // Create an XMLHttpRequest object
+            var xhr = new XMLHttpRequest();
+
+            if(formId =="repair_form"){
+                xhr.open('POST', 'watch_repair.php', true);
+
+            }else if(formId == "custom_design_form"){
+                xhr.open('POST', 'custom_design.php', true);
+
+            }else if(formId == "maintenance_form"){
+                xhr.open('POST', 'maintenance_form.php', true);
+
+            }else{
+                document.getElementById('response').innerHTML = 'Sorry, Form not submitted!';
+            }
+            
+
+            // Convert the FormData object to a URL-encoded string
+            const data = new URLSearchParams(formData).toString();
+
+            // Set the content type header for form data submission
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+            // Send the form data
+            xhr.send(data);
+
+            // Handle the response
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    document.getElementById('response').innerHTML = xhr.responseText;
+                } else {
+                    document.getElementById('response').innerHTML = 'Error: ' + xhr.statusText;
+                }
+            };
+
+            // Reset the form and hide it after submission
+            form.reset();
+        }
+
+    </script>
+</body>
+</html>

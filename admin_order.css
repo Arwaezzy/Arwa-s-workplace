@@ -1,0 +1,117 @@
+.details {
+    position: relative;
+    width: 100%;
+    padding: 20px;
+    display: grid;
+    grid-gap: 30px;
+    grid-template-columns: none;
+  }
+  
+  .details .recentOrders {
+    box-shadow: none;
+    width: 100%;
+    min-height: 300px;
+}
+
+.details .recentOrders table tr {
+    color: var(--black1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    height: 70px;
+  }
+
+.btn {
+    padding: 10px 20px;
+  border: none;
+  font-size: 17px;
+  color: #fff;
+  border-radius: 7px;
+  letter-spacing: 4px;
+  font-weight: 700;
+  text-transform: uppercase;
+  transition: 0.5s;
+}
+.update-btn {
+    padding: 10px 20px;
+  border: none;
+  font-size: 17px;
+  color: #fff;
+  border-radius: 7px;
+  letter-spacing: 4px;
+  font-weight: 700;
+  text-transform: uppercase;
+  transition: 0.5s;
+}
+
+.update-btn {
+    background-color: #3498db;
+    color: #fff;
+}
+
+.update-btn:hover {
+    background-color: #2186c4;
+}
+
+.delete {
+    background-color: #e74c3c;
+    color: #fff;
+}
+
+.delete:hover {
+    background-color: #c0392b;
+}
+
+@media screen and (max-width:1500px) {
+  .details{
+    overflow-y:auto;
+    height: 90vh;
+  }
+}
+
+@media screen and (max-width:1000px) {
+  .details{
+    font-size: 15px;
+  }
+  .details .recentOrders table tr td {
+    padding: 15px;
+  }
+  
+  .status.inProgress {
+    font-size: 12px;
+  }
+}
+
+.search{
+  margin: 20px;
+  border: 2px solid black;
+  border-radius: 40px;
+  height: 43px;
+}
+
+.cardHeader h2{
+  margin-left: 20px;
+}
+
+/* Style for filter dropdowns */
+select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  font-size: 14px;
+  margin-right: 10px;
+}
+
+/* Align filter dropdowns inline */
+.filter select {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* Add spacing between filter dropdowns */
+.filter select:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.filters{
+  margin: 10px 0px 20px 2%;
+}

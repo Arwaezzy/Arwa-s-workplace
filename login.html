@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - AMS Watches</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: priscilla;
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: url('banner14.jpg'); /* Replace with the path to your banner image */
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .header-left {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .header-left h1 {
+            margin: 0;
+            font-family: Lucida Handwriting;
+            font-size: 48px;
+        }
+
+        .slogan {
+            font-size: 24px;
+            margin-top: 5px;
+        }
+
+        .login-box {
+            background-color: #f5f5f5;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            z-index: 1;
+            color: #100f0f;
+        }
+
+        .login-box h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .login-box form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .login-box form input {
+            margin-bottom: 15px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .login-box form button {
+            padding: 15px;
+            font-size: 18px;
+            background: linear-gradient(45deg, #ff9800, #ff5722);
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .login-box form button:hover {
+            background: linear-gradient(45deg, #ff5722, #ff9800);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .login-box p {
+            margin-top: 20px;
+            font-size: 16px;
+        }
+
+        .login-box p a {
+            color: #ff5722;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay">
+        <div class="header-left">
+            <h1>AMS Watches</h1>
+            <div class="slogan">Time is on your Side</div>
+        </div>
+        <div class="login-box">
+            <h2>Login</h2>
+            <form action="login" method="POST">
+                <input type="text" name="username" placeholder="Username" required id="username">
+                <input type="password" name="password" placeholder="Password" required id="password">
+                <button type="submit" id="login-button">Login</button>
+                <p id="response"></p>
+            </form>
+            <p>Don't have an account? <a href="signin.html">Sign up</a></p>
+        </div>
+    </div>
+    <script>
+        // Signup form submission
+        document.getElementById('login-button').addEventListener('click', function(e) {
+        e.preventDefault();
+    
+    var username = document.getElementById('username').value;
+    var password = document.getElementById('password').value;
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'login_user.php', true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    var data = '&username=' + encodeURIComponent(username) + '&password=' + encodeURIComponent(password);
+
+        // Send the POST request with the form data
+        xhr.send(data);
+    // xhr.onload = function() {
+    //     if (xhr.status === 200) {
+    //         document.getElementById('response').innerHTML = xhr.responseText;
+    //     } else {
+    //         document.getElementById('response').innerHTML = 'Error: ' + xhr.statusText;
+    //     }
+    // };
+    xhr.onload = function() {
+            if (xhr.status === 200) {
+                try {
+                    // Parse the JSON response
+                    var response = JSON.parse(xhr.responseText);
+
+                    if (response.status === 'success') {
+                        // Store the userid in session storage
+                        sessionStorage.setItem('userid', response.userid);
+                        document.getElementById('response').innerHTML = 'Login successful!';
+
+                        if(response.admin){
+                            window.location.href = 'admin.php';
+                        }
+
+                        // Redirect to another page if needed
+                        //window.location.href = 'index.html';
+                    } else {
+                        // Display error message
+                        document.getElementById('response').innerHTML = response.message;
+                    }
+                } catch (e) {
+                    // Handle any JSON parsing errors
+                    document.getElementById('response').innerHTML = 'Error: Invalid response from server.';
+                }
+            } else {
+                document.getElementById('response').innerHTML = 'Error: ' + xhr.statusText;
+            }
+        };
+});
+
+
+        // Simulate user login (replace this with actual login logic)
+        //const userID = 'user123'; // This would come from your login process (e.g., a database query)
+        //localStorage.setItem('userID', userID);
+
+        // Redirect the user after successful login
+        //window.location.href = 'index.html';  // After logging in, redirect them to the homepage
+
+    </script>
+</body>
+</html>

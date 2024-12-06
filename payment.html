@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment - AMS Watches</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            text-align: center;
+            background-image: url("banner7.jpg");
+        }
+        header {
+            background-color: #D3D9D4;
+            color: #124E66;
+            padding: 20px;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 36px;
+            font-family: 'Lucida Handwriting', cursive;
+        }
+
+        .home-icon {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 24px;
+            color: #124E66;
+            text-decoration: none;
+        }
+
+        .home-icon:hover {
+            color: #333;
+        }
+
+        
+        main {
+            padding: 20px;
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .payment-option img {
+            max-width: 100px;
+            margin: 10px;
+            cursor: pointer;
+        }
+        .success-gif {
+            max-width: 200px;
+            margin: 20px auto;
+            display: none;
+        }
+        .generate-receipt {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            text-align: center;
+            margin-top: 20px;
+            display: none;
+        }
+        .generate-receipt:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="home-icon">
+            <i class="fas fa-home"></i>
+        </a>
+        <h1>#payment</h1>
+    </header>
+
+    <main id="paymentContent">
+        <!-- Content will be populated by JavaScript -->
+    </main>
+
+    <script>
+        // Function to extract URL parameters
+        function getParameterByName(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+
+        // Function to handle payment method display
+        function displayPaymentMethod() {
+            const paymentMethod = getParameterByName('paymentMethod');
+            const paymentContent = document.getElementById('paymentContent');
+
+            if (paymentMethod === 'UPI') {
+                paymentContent.innerHTML = `
+                    <div class="payment-option">
+                        <h2>Select your UPI method</h2>
+                        <img src="upi1.png" alt="UPI Method 1" onclick="showSuccess()">
+                        <img src="upi2.png" alt="UPI Method 2" onclick="showSuccess()">
+                    </div>
+                `;
+            } else if (paymentMethod === 'Net Banking') {
+                paymentContent.innerHTML = `
+                    <div class="payment-option">
+                        <h2>Select your Net Banking option</h2>
+                        <img src="bank1.jpg" alt="Bank 1" onclick="showSuccess()">
+                        <img src="bank2.jpg" alt="Bank 2" onclick="showSuccess()">
+                    </div>
+                `;
+            } else if (paymentMethod === 'Cash on Delivery') {
+                paymentContent.innerHTML = `
+                    <h2>We will soon get to you, keep your cash ready.</h2>
+                `;
+                setTimeout( generateReceipt,5000)
+            }
+        }
+
+        // Function to show success message and generate receipt button
+        function showSuccess() {
+            const paymentContent = document.getElementById('paymentContent');
+            paymentContent.innerHTML = `
+                <img src="success.gif" alt="Payment Successful" class="success-gif">
+                <label for="payment Done">Payment done Successfully</label>
+                <button class="generate-receipt" onclick="generateReceipt()">Generate Receipt</button>
+            `;
+            document.querySelector('.success-gif').style.display = 'block';
+            document.querySelector('.generate-receipt').style.display = 'block';
+        }
+
+        // Function to handle receipt generation
+        function generateReceipt() {
+            window.location.href = 'invoice.html';
+        }
+
+        // Initialize payment method display
+        displayPaymentMethod();
+    </script>
+</body>
+</html>
