@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMS Watches</title>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family:priscilla;
+        }
+
+        header {
+            font-family: Lucida Handwriting;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #D3D9D4;
+            color: #124E66;
+        }
+        .header-left {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+
+            width: 6rem; /* Adjust the size as needed */
+            height: 6rem;
+            margin-right: 20px; /* Space between the logo and title */
+        }
+
+        .header-left h1 {
+            margin: 0;
+        }
+
+         .slogan {
+          font-size: 18px;
+           color: #124E66;
+           margin-top: 5px;
+	}
+
+        .header-right ul {
+            list-style: none;
+            display: flex;
+        }
+
+        .header-right ul li {
+            margin-left: 20px;
+        }
+
+        .header-right ul li a {
+            color: #124E66;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+
+        .header-right ul li a.cart-icon {
+            position: relative;
+            display: inline-block;
+            color: #124E66;
+            font-size: 16px;
+            text-decoration: none;
+        }
+
+        .header-right ul li a.cart-icon::after {
+            content: "";
+            background-image: url('cart-icon.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            position: absolute;
+            top: -8px;
+            right: -8px;
+        }
+
+        .header-right ul li a.cart-icon:hover::after {
+            transform: scale(1.1);
+        }
+
+        .header-right ul li:last-child {
+            margin-left: auto;
+        }
+
+        .header-right ul li:last-child a {
+           
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .banner {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            background: url('banner12.jpeg') no-repeat center center/cover;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            color: #124E66;
+            text-align: left;
+            padding: 20px;
+            background-color: #D3D9D4;
+        }
+
+        .offer-texts {
+            margin-bottom: 20px;
+            margin-left: 50px;
+        }
+
+        .offer-texts div {
+            margin: 10px 0;
+            font-size: 20px;
+        }
+
+        .shop-button {
+            padding: 15px 30px;
+            font-size: 18px;
+            background: linear-gradient(45deg, #124E66, #D3D9D4);
+            color: #000;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .shop-button:hover {
+            background: linear-gradient(45deg,  #124E66, #D3D9D4);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .featured-products {
+            padding: 50px 20px;
+            text-align: center;
+            background-color: #D3D9D4;
+        }
+
+        .featured-products h2 {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .featured-products p {
+            font-size: 18px;
+            margin-bottom: 40px;
+        }
+
+        .product-grid {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 40px 20px;
+        }
+
+        .product-card {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            width: 22%;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            position: relative;
+        }
+
+        .product-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .product-card h3 {
+            font-size: 20px;
+            margin: 15px 0 5px 0;
+        }
+
+        .product-card p {
+            font-size: 16px;
+            color: #333;
+            margin: 5px 0;
+        }
+
+        .product-card .price {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .product-card .star-rating {
+            color: #ffa500;
+            margin: 5px 0;
+        }
+
+        .cart-icon {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+        }
+
+        .additional-banner {
+            background: url('banner19.jpg') no-repeat center center/cover;
+            color: #000;
+            text-align: center;
+            padding: 60px 10px;
+            position: relative;
+            display:flex ;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .additional-banner h3 {
+            width: fit-content;
+            background-color: #d3d9d4c3;
+            box-shadow: 2px 2px 2px 2px #d3d9d4c3;
+            padding: 10px 20px;
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .additional-banner p {
+            width: fit-content;
+            background-color: #d3d9d4c3;
+            padding: 10px 20px;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .explore-button {
+            padding: 15px 30px;
+            font-size: 18px;
+            background:  linear-gradient(45deg,  #032b3e, #6aadec);;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .explore-button:hover {
+            background:  linear-gradient(45deg,  #032b3e, #6aadec);
+        }
+
+        .footer {
+            padding: 50px 20px;
+            background-color: #D3D9D4;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .footer .column {
+            width: 30%;
+            padding: 20px;
+        }
+
+        .footer h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .footer p {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .footer h3 {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .footer a {
+            display: block;
+            font-size: 16px;
+            margin-bottom: 5px;
+            color: #333;
+            text-decoration: none;
+        }
+
+        .footer .social-icons {
+            display: flex;
+            margin-top: 10px;
+        }
+
+        .footer .social-icons img {
+            width: 24px;
+            height: 24px;
+            margin-right: 10px;
+        }
+
+        .brand-tabs {
+            background-color: #D3D9D4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            padding: 20px 0;
+        }
+
+        .tab {
+            position: relative;
+            width: 150px;
+            height: 300px;
+            overflow: hidden;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+            text-decoration: none; /* Remove underline from links */
+            background-color: #D3D9D4;
+            transition: .4s;
+        }
+
+        .tab:hover{
+            scale:1.1;
+        }
+
+        .tab img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .tab-label {
+            /* position: absolute; */
+            top: 50%;
+            left: -50%;
+            width: fit-content;
+            transform: translateY(-50%) rotate(-90deg);
+            transform-origin: top left;
+            background: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 5px;
+            white-space: nowrap;
+            letter-spacing: 2px;
+        }
+
+        .tab:hover {
+            transform: scale(1.05);
+        }
+
+        .tab:nth-child(odd) {
+            transform: translateY(20px);
+        }
+
+        .tab:nth-child(even) {
+            transform: translateY(-20px);
+        }
+
+
+        @media (max-width: 768px) {
+            .product-card {
+                width: 45%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .product-card {
+                width: 100%;
+            }
+
+            .brand-tabs {
+                justify-content: flex-start;
+                padding: 0 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <img src="newlogo1.png" alt="Logo" class="logo">
+        </div>
+        <nav class="header-right">
+            <ul>
+                <li><a href="#">Home</a></li>
+	            <li><a href="shop.php">Shop</a></li>
+	            <li><a href="contact.html">Contact</a></li>
+               <li><a href="cart.html">Cart</a></li>
+               
+               <li id="user-profile"><a href="signin.html">Sign-in</a></li> 
+            </ul>
+        </nav>
+    </header>
+
+    <section class="banner">
+        
+    </section>
+
+    <section class="brand-tabs">
+        <div class="brand-tabs">
+            <a href="shop.php" class="tab">
+                <img src="trendy-watch.jpg" alt="Trendy Watches">
+                <div class="tab-label">TRENDY</div>
+            </a>
+            <a href="kid.php" class="tab">
+                <img src="kid-watch.jpg" alt="Gold Watches">
+                <div class="tab-label">KIDS</div>
+            </a>
+            <a href="couple.php" class="tab">
+                <img src="couple-watch.jpg" alt="Couple Collection">
+                <div class="tab-label">COUPLE</div>
+            </a>
+            <a href="men.php" class="tab">
+                <img src="men-watch.jpg" alt="Men Watches">
+                <div class="tab-label">MEN</div>
+            </a>
+            <a href="women.php" class="tab">
+                <img src="women-watch.jpg" alt="Women Watches">
+                <div class="tab-label">WOMEN</div>
+            </a>
+        </div>
+    </section>
+
+    <section class="featured-products">
+        <h2>Featured Products</h2>
+        <p>Modern Design</p>
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="watch1.jpg" alt="Watch 1">
+                <h3>Modern Black</h3>
+                <p>Elegant black leather strap.</p>
+                <div class="star-rating">★★★★★</div>
+                <div class="price">$299</div>
+                <a onclick="location.href='cart.html?image=watch1.jpg&name=Modern%20Floral%20dial&description=Stylish%20Silver%20Metal%20band.&price=349&quantity=' "class="cart-icon">
+                    <img src="cart-icon.png" alt="Add to Cart" class="cart-icon">
+                </a>
+            </div>
+            <div class="product-card">
+                <img src="watch2.jpg" alt="Watch 2">
+                <h3>Rose Gold</h3>
+                <p>Chic rose gold finish.</p>
+                <div class="star-rating">★★★★☆</div>
+                <div class="price">$249</div>
+                <a onclick="location.href='cart.html?image=watch2.jpg&name=Modern%20Floral%20dial&description=Stylish%20Silver%20Metal%20band.&price=349&quantity='" class="cart-icon">
+                    <img src="cart-icon.png" alt="Add to Cart" class="cart-icon">
+                </a>
+            </div>
+            <div class="product-card">
+                <img src="watch3.jpg" alt="Watch 3">
+                <h3>Silver Line</h3>
+                <p>Minimalist design with silver casing.</p>
+                <div class="star-rating">★★★★★</div>
+                <div class="price">$199</div>
+                <a onclick="location.href='cart.html?image=watch3.jpg&name=Rose%20Gold%20Finish&description=Durable%20Braidal%20strap.&price=199&quantity=' + document.querySelector('.quantity-select3').value" class="cart-icon"></a>
+                    <img src="cart-icon.png" alt="Add to Cart" class="cart-icon">
+                </a>
+            </div>
+            <div class="product-card">
+                <img src="watch4.jpg" alt="Watch 4">
+                <h3>Gold Classic</h3>
+                <p>Luxurious gold-plated watch.</p>
+                <div class="star-rating">★★★☆☆</div>
+                <div class="price">$399</div>
+                <a onclick="location.href='cart.html?image=watch4.jpg&name=Captain%20America&description=Sleek%20Subtle%20Combo.&price=499&quantity=' + document.querySelector('.quantity-select4').value" class="cart-icon"></a>
+                    <img src="cart-icon.png" alt="Add to Cart" class="cart-icon">
+                </a>
+                </a>
+            </div>
+            <div class="product-card">
+                <img src="watch5.jpg" alt="Watch 5">
+                <h3>Royal Gold Michael Kors</h3>
+                <p>Innovative watch with cutting-edge technology.</p>
+                <div class="star-rating">★★★★★</div>
+                <div class="price">$399</div>
+                <a onclick="location.href='cart.html?image=watch5.jpg&name=Marble%20Print&description=White%20AND%20Blue%20Tiedye.&price=259&quantity=' + document.querySelector('.quantity-select5').value" class="cart-icon"></a>
+                    <img src="cart-icon.png" alt="Add to Cart" class="cart-icon">
+                </a>
+            </div>
+            <div class="product-card">
+                <img src="watch6.jpg" alt="Watch 6">
+                <h3>Brown Pitch</h3>
+                <p>Stylish watch for the modern gentleman.</p>
+                <div class="star-rating">★★★★☆</div>
+                <div class="price">$279</div>
+                <a onclick="location.href='cart.html?image=watch6.jpg&name=Chic%20Pink&description=Floral%20Band.&price=329&quantity=' + document.querySelector('.quantity-select6').value" class="cart-icon"></a>
+                    <img src="cart-icon.png" alt="Add to Cart" class="cart-icon">
+                </a>
+            </div>
+            <div class="product-card">
+                <img src="watch7.jpg" alt="Watch 7">
+                <h3>Snaky snake</h3>
+                <p>Luxury watch with premium craftsmanship.</p>
+                <div class="star-rating">★★★★★</div>
+                <div class="price">$499</div>
+                <a onclick="location.href='cart.html?image=watch7.jpg&name=Vintage%20Brown&description=Stylish%20leather%20band.&price=379&quantity=' + document.querySelector('.quantity-select7').value" class="cart-icon"></a>
+                    <img src="cart-icon.png" alt="Add to Cart" class="cart-icon">
+                </a>
+            </div>
+            <div class="product-card">
+                <img src="watch8.jpg" alt="Watch 8">
+                <h3>Fossil Peaches</h3>
+                <p>Sporty watch for active lifestyles.</p>
+                <div class="star-rating">★★★★☆</div>
+                <div class="price">$349</div>
+                <a  onclick="location.href='cart.html?image=watch8.jpg&name=Braidal%20Rose%20Gold&description=Black%20dial%20finish.&price=599&quantity=' + document.querySelector('.quantity-select8').value" class="cart-icon"></a>
+                    <img src="cart-icon.png" alt="Add to Cart" class="cart-icon">
+                </a>
+            </div>
+        </div>
+    </section>
+
+          
+    <section class="additional-banner">
+        <h3>Repair Services</h3>
+        <p>Upto 70% Off - All Brands</p>
+        <button class="explore-button" onclick="window.location.href='explore.html'">Explore more</button>
+
+    </section>
+
+
+
+
+<footer class="footer">
+        <div class="column">
+            <h2>AMS Watches</h2>
+            <p>Contact Details: 786-051-5253</p>
+            <p>Address: Raudat Tahera street, Bhindi bazar, Mumbai</p>
+            <p>Hours: Mon-Fri 9am-6pm</p>
+        </div>
+        <div class="column">
+            <h3>About Us</h3>
+            <a href="about us.html">Aboutus</a>
+            <a href="terms.html">Terms and Conditions</a>
+            <a href="knowus.html">Knowus</a>
+            
+        </div>
+        <div class="column">
+            <h3>My Account</h3>
+            <a href="signin.html">Sign In</a>
+            <div class="social-icons">
+                <a href="#"><img src="whatsapp.png" alt="WhatsApp" style="vertical-align: middle;">786-051-5253</a>
+                <a href="#"><img src="instagram.png" alt="Instagram" style="vertical-align: middle;">@ams_watches</a>
+            </div>
+        </div>
+    </footer>
+  
+  <script>
+        // JavaScript function to handle button click
+        document.getElementById("exploreBtn").onclick = function() {
+            // Replace with the action you want to perform on button click
+            alert("Explore more button clicked!");
+            // Example: Redirect to a new page
+            // window.location.href = 'explore.html';
+        };
+
+
+        // Simulate login status check (you can replace this with actual login logic)
+        const isLoggedIn = true; // Assume user is logged in
+        const profilePictureUrl = 'profile.jpg'; // URL of the profile picture
+
+        const profileElement = document.getElementById('user-profile');
+
+        if (isLoggedIn) {
+            profileElement.innerHTML = `
+                <a href="#">
+                    <img src="${profilePictureUrl}" alt="User Profile" style="width: 40px; height: 40px; border-radius: 50%;">
+                </a>`;
+            // Optionally add event listener to open user's purchase history
+            profileElement.addEventListener('click', function() {
+                // Redirect to purchase history or show in a dropdown
+                window.location.href = 'purchase-history.html';
+            });
+        }
+
+
+        document.querySelectorAll('.cart-icon').forEach((icon) => {
+            icon.addEventListener('click', () => {
+                const productCard = icon.closest('.product-card');
+                const productId = productCard.getAttribute('data-id');
+                const productDetails = {
+                    id: productId,
+                    image: productCard.querySelector('img').src,
+                    name: productCard.querySelector('h3').textContent,
+                    description: productCard.querySelector('p').textContent,
+                    rating: productCard.querySelector('.star-rating').textContent,
+                    price: productCard.querySelector('.price').textContent
+                };
+
+                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+                cart.push(productDetails);
+                localStorage.setItem('cart', JSON.stringify(cart));
+                alert('Item added to cart!');
+            });
+        });
+    </script>
+
+
+
+
+    </body>
+</html>
